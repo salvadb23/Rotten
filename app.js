@@ -1,9 +1,17 @@
 const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars');
+let reviews = [
+  { title: "Great Review" },
+  { title: "Next Review" }
+]
+
+// app.get('/', (req, res) => {
+//   res.render('home', { msg: 'Hello World!' });
+// })
 
 app.get('/', (req, res) => {
-  res.render('home', { msg: 'Hello World!' });
+  res.render('reviews-index', { reviews: reviews });
 })
 
 app.listen(3000, () => {
