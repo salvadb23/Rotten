@@ -16,10 +16,12 @@ const Review = mongoose.model('Review', {
 const methodOverride = require('method-override')
 
 
+
 // app.get('/', (req, res) => {
 //   res.render('home', { msg: 'Hello World!' });
 // })
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 app.get('/', (req, res) => {
   Review.find()
     .then(reviews => {
@@ -62,6 +64,7 @@ app.get('/reviews/:id/edit', (req, res) => {
     res.render('reviews-edit', {review: review});
   })
 })
+
 app.put('/reviews/:id', (req, res) => {
   Review.findByIdAndUpdate(req.params.id, req.body)
     .then(review => {
@@ -70,4 +73,12 @@ app.put('/reviews/:id', (req, res) => {
     .catch(err => {
       console.log(err.message)
     })
+})
+app.delete('/reviews/:id', function (req, res) {
+  console.log("DELETE review")
+  Review.findByIdAndRemove(req.params.id,).then((review) => {
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err.message);
+  })
 })
