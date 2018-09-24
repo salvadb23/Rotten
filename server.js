@@ -1,5 +1,6 @@
 const reviews = require('./controllers/reviews');
-// const Comment = require('./models/comment');
+const Review = require('./models/review')
+const Comment = require('./models/comment');
 const comments = require('./controllers/comments');
 const express = require('express');
 const app = express()
@@ -12,6 +13,7 @@ const methodOverride = require('method-override')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 reviews(app);
+comments(app);
 
 
 
