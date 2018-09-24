@@ -5,7 +5,7 @@ var exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true });
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes',{ useMongoClient: true });
 const methodOverride = require('method-override')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
