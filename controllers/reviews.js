@@ -4,27 +4,23 @@ const Comment = require('../models/comment')
 
 module.exports = app => {
 
-app.get('/', (req, res) => {
- Review.find()
-  .then(reviews => {
-    res.render('reviews-index', { reviews: reviews });
-  })
-  .catch(err => {
-    console.log(err);
-  })
-})
-app.get('/reviews/new', (req, res) => {
-  res.render('reviews-new', {});
+// app.get('/', (req, res) => {
+//  Review.find()
+//   .then(reviews => {
+//     res.render('reviews-index', { reviews: reviews });
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   })
+// })
+app.get('/movies/:movieId/reviews/new', (req, res) => {
+  res.render('reviews-new', { movieId: req.params.movieId })
 })
 
-app.post('/reviews', (req, res) => {
-  Review.create(req.body).then((review) => {
-    console.log(review);
-    res.redirect('/');
-  }).catch((err) => {
-    console.log(err.message);
-  })
+app.post('/movies/:movieId/reviews', (req, res) => {
+  console.log(req.body)
 })
+
 app.get('/reviews/:id', (req, res) => {
   // find review
   Review.findById(req.params.id).then(review => {

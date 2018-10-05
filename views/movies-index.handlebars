@@ -1,0 +1,11 @@
+<h1 style="padding-top: 15px;">Now Playing</h1>
+<div class='row'>
+{{#each movies}}
+  <div class="col-3 text-center" style="padding:10px">
+  <div class='card'>
+  <a href="/movies/{{this.id}}"><img class="card-img-top" src="http://image.tmdb.org/t/p/w300{{this.poster_path}}"></a>
+  <li class="card-body" style="list-style-type: none;">{{this.title}}</li>
+  </div>
+  </div>
+{{/each}}
+</div>

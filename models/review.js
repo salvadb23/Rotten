@@ -5,6 +5,7 @@ const Review = mongoose.model('Review',{
 	movieTitle: String,
 	movieRating: String,
 	description: String,
+	movieId: { type: String, required: true }
 });
 
  module.exports = Review;
